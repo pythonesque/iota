@@ -1,18 +1,13 @@
 //FIXME: Check unicode support
 
-use log::{Log, Change, LogEntry};
+use tlog::{Log, Change, LogEntry};
 
 use gapbuffer::GapBuffer;
+use query::Mark;
 
 use std::cmp;
 use std::collections::HashMap;
 use std::io::{File, Reader, BufferedReader};
-
-#[deriving(Copy, PartialEq, Eq, Hash, Show)]
-pub enum Mark {
-    Cursor(uint),           //For keeping track of cursors.
-    DisplayMark(uint),      //For using in determining some display of characters.
-}
 
 #[deriving(Copy, PartialEq, Eq, Show)]
 pub enum Direction {
@@ -284,8 +279,8 @@ impl<'a> Iterator<&'a [u8]> for Lines<'a> {
 
 #[cfg(test)]
 mod test {
-
-    use buffer::{Buffer, Direction, Mark};
+    use buffer::{Buffer, Direction};
+    use query::Mark;
 
     fn setup_buffer(testcase: &'static str) -> Buffer {
         let mut buffer = Buffer::new();

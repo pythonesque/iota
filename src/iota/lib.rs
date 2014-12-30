@@ -1,7 +1,10 @@
 #![feature(unboxed_closures)]
 #![feature(unsafe_destructor)]
+#![feature(phase)]
 #![feature(slicing_syntax)]
 
+#[phase(plugin,link)] extern crate log;
+#[phase(plugin,link)] extern crate racc;
 extern crate rustbox;
 extern crate gapbuffer;
 
@@ -17,8 +20,9 @@ mod keyboard;
 mod keymap;
 mod view;
 mod uibuf;
-mod log;
+mod tlog;
 mod frontends;
+mod query;
 
 #[deriving(Copy)]
 pub enum Response {

@@ -1,7 +1,8 @@
-use buffer::{Buffer, Direction, Mark};
+use buffer::{Buffer, Direction};
 use input::Input;
 use uibuf::{UIBuffer, CharColor};
 use frontends::Frontend;
+use query::Mark;
 
 /// A View is an abstract Window (into a Buffer).
 ///
